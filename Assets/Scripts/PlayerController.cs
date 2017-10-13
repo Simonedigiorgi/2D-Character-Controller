@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public GameObject bullet;               // Object to Instantiate
+    public Transform Gun;                   // Position where to shoot
+    public float fireRate;                  // Rate of fire
+    private float nextFire;                 // Next Shoot rate
+
     public float moveSpeed;
     public float jump;
     private CharacterController controller;
@@ -14,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+
         controller = GetComponent<CharacterController>();
     }
 
@@ -39,8 +45,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Shoot
+
+        if (Input.GetMouseButtonDown(0) && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(bullet, new Vector3(Gun.position.x, Gun.position.y, Gun.position.z), Quaternion.identity);
+        }
+
         // To change the Psysics Gravity go to Edit/Project Settings/Physics
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
         controller.Move(moveDirection * Time.deltaTime);
     }
+
 }
