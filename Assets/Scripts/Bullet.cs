@@ -22,4 +22,13 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Walls")
+        {
+            Destroy(this.gameObject);
+            Debug.Log("hit");
+        }
+    }
+
 }
