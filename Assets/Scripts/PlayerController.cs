@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public GameObject bullet;               // Object to Instantiate
-    public Transform Gun;                   // Position where to shoot
+
 
     public float moveSpeed;
     public float jump;
