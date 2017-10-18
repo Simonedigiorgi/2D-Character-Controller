@@ -8,9 +8,7 @@ public class GameManager : MonoBehaviour {
     void Start () {
 
         // Set the mouse invisible in play mode
-        //Cursor.visible = false;
-
-
+        Cursor.visible = false;
     }
 	
 	void Update () {
